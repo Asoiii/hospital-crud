@@ -1,12 +1,19 @@
-import PatientForm from "@/components/formPatient";
+"use client";
 
-const pasienPendaftaran = () => {
+import PatientForm from "@/components/Ui/formPatient";
+import { validateUser } from "@/lib/middleware";
+import { useEffect } from "react";
+
+const PasienPendaftaran = () => {
+  useEffect(() => {
+    validateUser();
+  }, []);
+
   return (
     <div>
-      <div>pasienPendaftaran</div>
       <PatientForm></PatientForm>
     </div>
   );
 };
 
-export default pasienPendaftaran;
+export default PasienPendaftaran;

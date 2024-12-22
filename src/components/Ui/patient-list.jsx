@@ -1,21 +1,36 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Table, Button, Spinner, Alert } from "react-bootstrap";
-import { usePatients } from "../hooks/usePatients";
-import { fetchPatients } from "@/lib/api";
+import { usePatients } from "../../hooks/usePatients";
+import { deletePatient } from "../../lib/api"; // Pastikan fungsi delete terhubung
+import LoadingSpinner from "../../components/Elements/loading/loading";
 
 const PatientList = () => {
   const { patients, loading, error } = usePatients();
+  const [localPatients, setLocalPatients] = useState([]);
+
+  useEffect(() => {
+    if (patients) {
+      setLocalPatients(patients); // Mengisi state lokal dengan data pasien
+    }
+  }, [patients]);
+
+  // Fungsi untuk menghapus pasien dan memperbarui daftar lokal
+  const handleDelete = async (id) => {
+    try {
+      await deletePatient(id);
+      setLocalPatients(
+        localPatients.filter((patient) => patient.patientRegistrationId !== id)
+      );
+    } catch (error) {
+      console.error("Gagal menghapus pasien", error);
+    }
+  };
+
   if (loading) {
-    return (
-      <div className="d-flex justify-content-center align-items-center">
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      </div>
-    );
+    return LoadingSpinner;
   }
 
   if (error) {
@@ -44,7 +59,7 @@ const PatientList = () => {
           </tr>
         </thead>
         <tbody>
-          {patients.map((patient) => (
+          {localPatients.map((patient) => (
             <tr key={patient.patientRegistrationId}>
               <td>{patient.kodePasien}</td>
               <td>{patient.namaLengkapPasien}</td>
@@ -53,7 +68,9 @@ const PatientList = () => {
               <td>{patient.alergi}</td>
               <td>{patient.nomorTelepon1}</td>
               <td>
-                <Link href={`/patients/${patient.patientRegistrationId}`}>
+                <Link
+                  href={`/patients/detail/${patient.patientRegistrationId}`}
+                >
                   <Button variant="success" size="sm" className="mr-2">
                     Lihat
                   </Button>
@@ -64,7 +81,7 @@ const PatientList = () => {
                   </Button>
                 </Link>
                 <Button
-                  onClick={() => deletePatient(patient.patientRegistrationId)}
+                  onClick={() => handleDelete(patient.patientRegistrationId)}
                   variant="danger"
                   size="sm"
                 >

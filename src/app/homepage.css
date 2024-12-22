@@ -1,0 +1,290 @@
+/* Global style untuk seluruh website */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Style untuk homepage */
+.homepage-container {
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  padding: 50px 0;
+  background: url(../assets/background/home.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center left;
+}
+
+.homepage-content {
+  position: relative;
+  margin-left: 10rem;
+}
+
+.text-section .content-wrapper {
+  max-width: 500px;
+  text-align: left;
+}
+
+.text-section h1 {
+  font-size: 48px;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+}
+
+.text-section h1 span {
+  color: #008cdd;
+}
+
+.text-section p {
+  font-size: 18px;
+  color: #777;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.read-more-btn {
+  background-color: #008cdd;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.image-section img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* Styles for the navbar */
+.navbar {
+  background-color: #f5faff;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.brandText {
+  margin-left: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.navLink {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  margin-right: 20px;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: #007bff;
+}
+
+.callButton {
+  background-color: #007bff;
+  border: none;
+  border-radius: 30px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.callButton:hover {
+  background-color: #0056b3;
+}
+
+.callButton .button-link {
+  text-decoration: none;
+  color: white;
+}
+
+.logout {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    padding: 1rem 2rem;
+  }
+
+  .brandText {
+    font-size: 1.8rem;
+  }
+
+  .navLink {
+    font-size: 1.1rem;
+    margin-right: 25px;
+  }
+
+  .callButton {
+    font-size: 1.1rem;
+    padding: 0.6rem 2rem;
+  }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+  .navbar {
+    padding: 0.8rem 1.5rem;
+  }
+
+  .brandText {
+    font-size: 1.5rem;
+  }
+
+  .navLink {
+    font-size: 1rem;
+    margin-right: 20px;
+  }
+
+  .callButton {
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    padding: 0.6rem 1rem;
+  }
+
+  .brandText {
+    font-size: 1.3rem;
+  }
+
+  .navLink {
+    font-size: 0.9rem;
+    margin-right: 15px;
+  }
+
+  .callButton {
+    font-size: 0.9rem;
+    padding: 0.4rem 1.2rem;
+  }
+
+  .navbar-collapse {
+    text-align: center;
+  }
+
+  .navLink {
+    margin-bottom: 10px;
+  }
+}
+
+/* ===================== RESPONSIVE MEDIA QUERIES ===================== */
+
+/* Responsif untuk Tablet (max-width: 991px) */
+@media (max-width: 991px) {
+  .homepage-container {
+    padding: 30px 20px;
+  }
+
+  .text-section h1 {
+    font-size: 40px;
+  }
+
+  .text-section p {
+    font-size: 15px;
+  }
+
+  .read-more-btn {
+    padding: 8px 16px;
+    font-size: 15px;
+  }
+
+  .image-section img {
+    width: 90%;
+  }
+}
+
+/* Responsif untuk HP/Smartphone (max-width: 768px) */
+@media (max-width: 768px) {
+  .homepage-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 10px;
+  }
+
+  .text-section {
+    margin-bottom: 20px;
+  }
+
+  .text-section h1 {
+    font-size: 32px;
+  }
+
+  .text-section p {
+    font-size: 14px;
+  }
+
+  .read-more-btn {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  .image-section img {
+    width: 100%;
+  }
+}
+
+/* Responsif untuk HP Layar Kecil (max-width: 576px) */
+@media (max-width: 576px) {
+  .homepage-container {
+    padding: 15px 10px;
+  }
+
+  .text-section h1 {
+    font-size: 28px;
+  }
+
+  .text-section p {
+    font-size: 13px;
+  }
+
+  .read-more-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .image-section img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Responsif untuk Laptop (min-width: 992px) dan Desktop */
+@media (min-width: 992px) {
+  .homepage-container {
+    padding: 50px 40px;
+  }
+
+  .text-section h1 {
+    font-size: 48px;
+  }
+
+  .text-section p {
+    font-size: 16px;
+  }
+
+  .read-more-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  .image-section img {
+    width: 100%;
+  }
+}

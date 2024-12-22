@@ -1,39 +1,25 @@
-"use client";
-
 import { useState, useEffect } from "react";
-import { fetchPatients } from "@/lib/api";
+import { fetchPatients } from "../lib/api";
 
 export const usePatients = () => {
   const [patients, setPatients] = useState([]);
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const loadPatients = async () => {
+    const getPatients = async () => {
       try {
         const data = await fetchPatients();
         setPatients(data);
       } catch (err) {
-        setError(err.message);
+        setError("Gagal memuat daftar pasien.");
       } finally {
         setLoading(false);
       }
     };
 
-    loadPatients();
+    getPatients();
   }, []);
 
-  return { patients, error, loading };
+  return { patients, loading, error };
 };
-
-export default async function handleDelete(id) {
-  if (!confirm("Apakah Anda yakin ingin menghapus pasien ini?")) return;
-
-  try {
-    await deletePatient(id);
-    alert("Pasien berhasil dihapus!");
-    window.location.reload();
-  } catch (err) {
-    alert("Gagal menghapus pasien. Silakan coba lagi.");
-  }
-}
