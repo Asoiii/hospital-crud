@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { createPatient } from "@/lib/api";
 
 export const handlePatientSubmit = async (
@@ -19,7 +18,7 @@ export const handlePatientSubmit = async (
   }
 
   try {
-    await createPatient(formData); // Mengirim data pasien ke backend
+    await createPatient(formData); // Simpan ke API
     setSuccessMessage("Pasien berhasil ditambahkan!");
     setErrorMessage("");
     setFormData({
@@ -37,7 +36,6 @@ export const handlePatientSubmit = async (
       nomorTeleponKantor: "",
       alergi: "",
       namaKeluargaTerdekat: "",
-      hubunganKeluarga: "",
       karyawanRumahSakit: "",
       alamatKeluargaPasien: "",
       nomorTeleponKeluargaPasien: "",
@@ -48,11 +46,22 @@ export const handlePatientSubmit = async (
       namaSutriPasien: "",
       pekerjaanSutriPasien: "",
       nomorIdentitasSutriPasien: "",
+      AlamatLengkap: "",
+      HubunganKeluarga: "",
+      Kewarganegaraan: "",
+      NomorIdentitasPasien: "",
+      NomorRekamMedisBaru: "",
+      NomorTelepon1: "",
+      PasienPrioritas: "",
+      StatusPasien: "",
+      TempatLahir: "",
+      Title: "",
     });
 
-    // Navigasi kembali ke halaman daftar pasien
-    router.push("/patient-list"); // Gantilah '/patient-list' dengan path sesuai halaman daftar pasien Anda.
+    // Navigasi ke halaman daftar pasien
+    window.location.href = "/patients";
   } catch (err) {
-    setErrorMessage("Gagal menambahkan pasien. Periksa kembali input Anda.");
+    console.error(err);
+    setErrorMessage("Terjadi kesalahan saat menambahkan pasien.");
   }
 };

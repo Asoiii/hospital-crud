@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchPatientById } from "../lib/api";
+import { fetchPatientById } from "../../lib/api";
 
 const usePatientData = (id) => {
   const [patient, setPatient] = useState(null);

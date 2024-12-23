@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchPatients } from "../lib/api";
+import { fetchPatients } from "../../lib/api";
 
 export const usePatients = () => {
   const [patients, setPatients] = useState([]);

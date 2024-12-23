@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
-import usePatientData from "../../../../hooks/usePatientData";
+import usePatientData from "../../../../hooks/Detail/usePatientData";
 import LoadingSpinner from "../../../../components/Elements/loading/loading";
 import PatientDetails from "../../../../components/Ui/PatientDetail";
 import { Alert } from "react-bootstrap";
@@ -17,9 +17,9 @@ const PatientDetailPage = () => {
     validateUser();
   }, []);
 
-  if (loading) {
-    return <LoadingSpinner />;
-  }
+  // if (loading) {
+  //   return <LoadingSpinner />;
+  // }
 
   if (error) {
     return <Alert variant="danger">{error}</Alert>;

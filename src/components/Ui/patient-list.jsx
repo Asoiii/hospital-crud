@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Table, Button, Spinner, Alert } from "react-bootstrap";
-import { usePatients } from "../../hooks/usePatients";
+import { usePatients } from "../../hooks/list-pasien/usePatients";
 import { deletePatient } from "../../lib/api"; // Pastikan fungsi delete terhubung
 import LoadingSpinner from "../../components/Elements/loading/loading";
 
